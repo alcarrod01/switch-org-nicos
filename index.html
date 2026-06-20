@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switch Orgánicos - MAD9</title>
+    <title>Switch OrgÃ¡nicos - MAD9</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f0f5; color: #333; min-height: 100vh; }
@@ -73,34 +73,34 @@
     </style>
 </head>
 <body>
-    <button class="refresh-btn" onclick="loadData()">🔄 Actualizar</button>
-    <div class="header"><h1>🔄 <span>Switch Orgánicos</span></h1><p>Días con falta de disponibilidad — Intercambio de turnos</p></div>
-    <div class="loading" id="loading">⏳ Cargando datos...</div>
+    <button class="refresh-btn" onclick="loadData()">ðŸ”„ Actualizar</button>
+    <div class="header"><h1>ðŸ”„ <span>Switch OrgÃ¡nicos</span></h1><p>DÃ­as con falta de disponibilidad â€” Intercambio de turnos</p></div>
+    <div class="loading" id="loading">â³ Cargando datos...</div>
     <div class="stats" id="stats-section" style="display:none;">
-        <div class="stat-card"><div class="number" id="stat-total">0</div><div class="label">Total días en 2026</div></div>
+        <div class="stat-card"><div class="number" id="stat-total">0</div><div class="label">Total dÃ­as en 2026</div></div>
         <div class="stat-card"><div class="number" id="stat-month-count">0</div><div class="label" id="stat-month-name">Junio</div></div>
         <div class="stat-card"><div class="number" id="stat-m2-count">0</div><div class="label" id="stat-m2-name">Julio</div></div>
         <div class="stat-card"><div class="number" id="stat-m3-count">0</div><div class="label" id="stat-m3-name">Agosto</div></div>
         <div class="stat-card"><div class="number" id="stat-m4-count">0</div><div class="label" id="stat-m4-name">Septiembre</div></div>
     </div>
     <div class="calendar-container" id="calendar-container" style="display:none;">
-        <div class="month-nav"><button class="nav-btn" onclick="changeMonth(-1)">←</button><div class="month-title" id="month-title">📅 <span>Junio 2026</span></div><button class="nav-btn" onclick="changeMonth(1)">→</button></div>
-        <div class="calendar-legend">Los días en <span class="green-text">verde</span> están disponibles para librar — ¡haz clic para ver detalles!</div>
-        <div class="calendar-warning">⚠️ Los próximos 8 días están fuera de plazo y no permiten anotarse.</div>
+        <div class="month-nav"><button class="nav-btn" onclick="changeMonth(-1)">â†</button><div class="month-title" id="month-title">ðŸ“… <span>Junio 2026</span></div><button class="nav-btn" onclick="changeMonth(1)">â†’</button></div>
+        <div class="calendar-legend">Los dÃ­as en <span class="green-text">verde</span> estÃ¡n disponibles para librar â€” Â¡haz clic para ver detalles!</div>
+        <div class="calendar-warning">âš ï¸ Los prÃ³ximos 8 dÃ­as estÃ¡n fuera de plazo y no permiten anotarse.</div>
         <div id="calendar">
-            <div class="weekdays"><div class="weekday">Lun</div><div class="weekday">Mar</div><div class="weekday">Mié</div><div class="weekday">Jue</div><div class="weekday">Vie</div><div class="weekday">Sáb</div><div class="weekday">Dom</div></div>
+            <div class="weekdays"><div class="weekday">Lun</div><div class="weekday">Mar</div><div class="weekday">MiÃ©</div><div class="weekday">Jue</div><div class="weekday">Vie</div><div class="weekday">SÃ¡b</div><div class="weekday">Dom</div></div>
             <div class="days-grid" id="days-grid"></div>
         </div>
         <div class="dots" id="dots"></div>
     </div>
-    <div class="no-data" id="no-data" style="display:none;"><div style="font-size:48px;">📅</div><p style="margin-top:10px;">No hay datos disponibles</p></div>
+    <div class="no-data" id="no-data" style="display:none;"><div style="font-size:48px;">ðŸ“…</div><p style="margin-top:10px;">No hay datos disponibles</p></div>
     <div class="modal-overlay" id="modal" onclick="closeModal(event)">
         <div class="modal" onclick="event.stopPropagation()">
-            <button class="close-x" onclick="closeModal()">✕</button>
+            <button class="close-x" onclick="closeModal()">âœ•</button>
             <h3 id="modal-title"></h3>
             <div class="subtitle" id="modal-subtitle"></div>
             <div id="modal-options"></div>
-            <div class="login-note" id="login-section">Introduce tu login y se enviará el formulario con las fechas ya bloqueadas<div class="login-row"><input type="text" class="login-input" id="login-input" placeholder="Tu login (ej: alcarrod)"></div></div>
+            <div class="login-note" id="login-section">Introduce tu login y se enviarÃ¡ el formulario con las fechas ya bloqueadas<div class="login-row"><input type="text" class="login-input" id="login-input" placeholder="Tu login (ej: alcarrod)"></div></div>
             <div id="modal-buttons"></div>
         </div>
     </div>
@@ -109,7 +109,7 @@
         const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSesdUmG1xJPAEeVO569IUvjIjoRLWZIN6LQn34xUagGOxzQ0Q/formResponse";
         const PLAZO_DIAS = 8;
         const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-        const dayNamesLong = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+        const dayNamesLong = ['Domingo','Lunes','Martes','MiÃ©rcoles','Jueves','Viernes','SÃ¡bado'];
         let allData = [];
         let currentMonth = new Date().getMonth();
         let currentYear = new Date().getFullYear();
@@ -118,11 +118,11 @@
 
         function loadData() {
             document.getElementById('loading').style.display = 'block';
-            document.getElementById('loading').textContent = '⏳ Cargando datos...';
+            document.getElementById('loading').textContent = 'â³ Cargando datos...';
             fetch(CSV_URL)
                 .then(function(response) { return response.text(); })
                 .then(function(csv) { parseCSV(csv); document.getElementById('loading').style.display = 'none'; })
-                .catch(function(err) { document.getElementById('loading').textContent = '❌ Error al cargar. Refresca la página.'; console.error(err); });
+                .catch(function(err) { document.getElementById('loading').textContent = 'âŒ Error al cargar. Refresca la pÃ¡gina.'; console.error(err); });
         }
 
         function parseCSV(csv) {
@@ -188,7 +188,7 @@
         }
 
         function renderCalendar() {
-            document.getElementById('month-title').innerHTML = '📅 <span>' + monthNames[currentMonth] + ' ' + currentYear + '</span>';
+            document.getElementById('month-title').innerHTML = 'ðŸ“… <span>' + monthNames[currentMonth] + ' ' + currentYear + '</span>';
             var today = new Date(); today.setHours(0,0,0,0);
             var plazoLimit = new Date(today); plazoLimit.setDate(plazoLimit.getDate() + PLAZO_DIAS);
             var firstDay = new Date(currentYear, currentMonth, 1);
@@ -210,13 +210,13 @@
                 if (options && options.length > 0) {
                     var isExpired = thisDate <= plazoLimit;
                     if (isExpired) {
-                        html += '<div class="day-cell expired"><div class="day-number">' + day + '</div><div class="expired-badge">⛔ Fuera de plazo</div></div>';
+                        html += '<div class="day-cell expired"><div class="day-number">' + day + '</div><div class="expired-badge">â›” Fuera de plazo</div></div>';
                     } else {
                         var infoHtml = '';
                         options.forEach(function(opt) {
                             var dayName = dayNamesLong[opt.workDay.getDay()];
                             var dateStr = opt.workDay.getDate() + ' de ' + monthNames[opt.workDay.getMonth()];
-                            infoHtml += '<div>🏢 ' + dayName + ' ' + dateStr + '</div>';
+                            infoHtml += '<div>ðŸ¢ ' + dayName + ' ' + dateStr + '</div>';
                         });
                         html += '<div class="day-cell available" onclick="openDay(' + day + ')"><div class="day-number">' + day + '</div><div class="day-info">' + infoHtml + '</div></div>';
                     }
@@ -250,8 +250,8 @@
             var plazoLimit = new Date(today); plazoLimit.setDate(plazoLimit.getDate() + PLAZO_DIAS);
             var thisDate = new Date(currentYear, currentMonth, day);
             var isExpired = thisDate <= plazoLimit;
-            document.getElementById('modal-title').innerHTML = '<span class="palm">🌴</span> ' + day + ' de ' + monthNames[currentMonth] + ' — Día disponible para librar';
-            document.getElementById('modal-subtitle').textContent = options.length + ' opción(es) disponible(s) este día';
+            document.getElementById('modal-title').innerHTML = '<span class="palm">ðŸŒ´</span> ' + day + ' de ' + monthNames[currentMonth] + ' â€” DÃ­a disponible para librar';
+            document.getElementById('modal-subtitle').textContent = options.length + ' opciÃ³n(es) disponible(s) este dÃ­a';
             var optionsHtml = '';
             options.forEach(function(opt, idx) {
                 var workDayName = dayNamesLong[opt.workDay.getDay()];
@@ -259,15 +259,15 @@
                 var freeDayNameOpt = dayNamesLong[opt.freeDay.getDay()];
                 var freeStr = freeDayNameOpt + ' ' + opt.freeDay.getDate() + ' de ' + monthNames[opt.freeDay.getMonth()];
                 if (isExpired) {
-                    optionsHtml += '<div class="option-card"><div class="free-line"><span class="palm">🌴</span> Día libre: ' + freeStr + '</div><div class="work-line">🏢 Día a trabajar a cambio: <strong>' + workStr + '</strong></div></div>';
+                    optionsHtml += '<div class="option-card"><div class="free-line"><span class="palm">ðŸŒ´</span> DÃ­a libre: ' + freeStr + '</div><div class="work-line">ðŸ¢ DÃ­a a trabajar a cambio: <strong>' + workStr + '</strong></div></div>';
                 } else {
-                    optionsHtml += '<div class="option-card"><div class="free-line"><span class="palm">🌴</span> Día libre: ' + freeStr + '</div><div class="work-line">🏢 Día a trabajar a cambio: <strong>' + workStr + '</strong></div><button class="accept-btn" onclick="submitRequest(' + idx + ',' + day + ')">✋ ¡Me apunto! Acepto el cambio</button></div>';
+                    optionsHtml += '<div class="option-card"><div class="free-line"><span class="palm">ðŸŒ´</span> DÃ­a libre: ' + freeStr + '</div><div class="work-line">ðŸ¢ DÃ­a a trabajar a cambio: <strong>' + workStr + '</strong></div><button class="accept-btn" onclick="submitRequest(' + idx + ',' + day + ')">âœ‹ Â¡Me apunto! Acepto el cambio</button></div>';
                 }
             });
             document.getElementById('modal-options').innerHTML = optionsHtml;
             if (isExpired) {
                 document.getElementById('login-section').style.display = 'none';
-                document.getElementById('modal-buttons').innerHTML = '<div class="expired-msg">⛔ Fuera de plazo — Menos de 8 días de antelación</div>';
+                document.getElementById('modal-buttons').innerHTML = '<div class="expired-msg">â›” Fuera de plazo â€” Menos de 8 dÃ­as de antelaciÃ³n</div>';
             } else {
                 document.getElementById('login-section').style.display = 'block';
                 document.getElementById('modal-buttons').innerHTML = '';
