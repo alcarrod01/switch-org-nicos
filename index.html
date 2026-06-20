@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Switch OrgÃ¡nicos - MAD9</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f0f5; color: #333; min-height: 100vh; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f0f5; color: #333; min-height: 100vh; direction: ltr; text-align: left; unicode-bidi: plaintext; }
         .header { text-align: center; padding: 25px 20px 15px; }
         .header h1 { font-size: 28px; color: #222; }
         .header h1 span { color: #6a0dad; }
@@ -189,9 +190,9 @@
 
         function renderCalendar() {
             document.getElementById('month-title').innerHTML = 'ðŸ“… <span>' + monthNames[currentMonth] + ' ' + currentYear + '</span>';
-            var today = new Date(); today.setHours(0,0,0,0);
-            var plazoLimit = new Date(today); plazoLimit.setDate(plazoLimit.getDate() + PLAZO_DIAS);
-            var firstDay = new Date(currentYear, currentMonth, 1);
+                if (options && options.length > 0) {
+                    // Expired if freeDay <= plazoLimit OR any workDay <= plazoLimit
+                    var isExpired = thisDate <= plazoLimit || options.some(function(opt) { return opt.workDay <= plazoLimit; });
             var lastDay = new Date(currentYear, currentMonth + 1, 0);
             var startDayOfWeek = (firstDay.getDay() + 6) % 7;
             var monthData = {};
@@ -227,7 +228,7 @@
             document.getElementById('days-grid').innerHTML = html;
             updateStats(); renderDots();
         }
-
+            var isExpired = thisDate <= plazoLimit || options.some(function(opt) { return opt.workDay <= plazoLimit; });
         function renderDots() {
             var monthsWithData = {};
             allData.forEach(function(d) { monthsWithData[d.freeDay.getFullYear() + '-' + d.freeDay.getMonth()] = true; });
